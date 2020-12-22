@@ -2,14 +2,14 @@
   <div>
     <div>
       <b-navbar toggleable="lg" type="dark" variant="info" class="cor-Rotaract">
-        <b-navbar-brand href="#">Livraria Rotaract Niterói Icaraí</b-navbar-brand>
+        <b-navbar-brand @click="home" href="#">Livraria Rotaract Niterói Icaraí</b-navbar-brand>
 
         <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
         <b-collapse id="nav-collapse" is-nav>
           <b-navbar-nav>
-            <b-nav-item href="#">Link</b-nav-item>
-            <b-nav-item href="#" disabled>Disabled</b-nav-item>
+            <b-nav-item @click="sobre" href="#">Sobre nós</b-nav-item>
+            <b-nav-item @click="vazio" href="#" disabled>Disabled</b-nav-item>
           </b-navbar-nav>
 
           <!-- Right aligned nav items -->
@@ -43,6 +43,12 @@ export default {
   methods: {
       login(){
           this.$router.push({name:"login"})
+      },
+      sobre(){
+          this.$router.push({name:"sobre"})
+      },
+      home(){
+          this.$router.push({name:"home"})
       }
   },
 };
