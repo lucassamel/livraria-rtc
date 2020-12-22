@@ -1,7 +1,7 @@
 <template>
   <div>
     <div>
-      <b-navbar toggleable="lg" type="dark" variant="info">
+      <b-navbar toggleable="lg" type="dark" variant="info" class="cor-Rotaract">
         <b-navbar-brand href="#">NavBar</b-navbar-brand>
 
         <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
@@ -62,5 +62,9 @@ export default {
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
+}
+
+.cor-Rotarct{
+    color: #BB4A4D;
 }
 </style>
