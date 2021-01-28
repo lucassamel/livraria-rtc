@@ -1,7 +1,7 @@
 <template>
   <div>
     <div>
-      <b-navbar toggleable="lg" type="dark" variant="info" class="cor">
+      <b-navbar toggleable="lg" type="dark" style="background-color: #db5079">
         <b-navbar-brand href="#">Rotaract Niterói Icaraí</b-navbar-brand>
 
         <b-navbar-brand href="https://www.facebook.com/rotaracticarai/">
@@ -27,13 +27,5 @@ export default {
 .icone {
   margin: 8px;
   animation: backwards
-}
-
-.cor {
-  background-color: #bb4a4d;
-}
-
-.texto {
-  color: white;
 }
 </style>

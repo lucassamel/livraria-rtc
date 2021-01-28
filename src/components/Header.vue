@@ -1,7 +1,7 @@
 <template>
   <div>
     <div>
-      <b-navbar toggleable="lg" type="dark" variant="info" class="cor-Rotaract">
+      <b-navbar toggleable="lg" type="dark"  style="background-color: #db5079" >
         <b-navbar-brand @click="home" href="#">Livraria Rotaract Niterói Icaraí</b-navbar-brand>
 
         <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
@@ -27,7 +27,7 @@
               <template #button-content>
                 <em>User</em>
               </template>
-              <b-dropdown-item @click="login" href="#">Profile</b-dropdown-item>
+              <b-dropdown-item @click="login" href="#">Login</b-dropdown-item>
               <b-dropdown-item href="#">Sign Out</b-dropdown-item>
             </b-nav-item-dropdown>
           </b-navbar-nav>
@@ -62,9 +62,5 @@ export default {
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-}
-
-.cor-Rotarct{
-    color: #BB4A4D;
 }
 </style>
