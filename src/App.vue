@@ -1,6 +1,8 @@
 <template>
   <div id="app">
-    <Header/>
+    
+      <Header/>   
+      
     <b-container fluid>
       <router-view />
     </b-container>
@@ -25,5 +27,11 @@ export default {
 </script>
 
 <style>
+.barra {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+}
 
 </style>

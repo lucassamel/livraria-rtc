@@ -1,60 +1,38 @@
 <template>
   <div>
-    <b-carousel
-      id="carousel-1"
-      v-model="slide"
-      :interval="4000"
-      controls
-      indicators
-      background="#ababab"
-      img-width="1024"
-      img-height="480"
-      style="text-shadow: 1px 1px 2px #333;"
-      @sliding-start="onSlideStart"
-      @sliding-end="onSlideEnd"
-    >
-      <!-- Text slides with image -->
-      <b-carousel-slide
-        caption="First slide"
-        text="Nulla vitae elit libero, a pharetra augue mollis interdum."
-        img-src="https://picsum.photos/1024/480/?image=52"
-      ></b-carousel-slide>
+    <br>
+    <div>
+  <b-card>
+    <b-media>
+      <template #aside>
+        <b-img src="src/assets/troca de livros.png" width="256" alt="livro"></b-img>
+      </template>
 
-      <!-- Slides with custom text -->
-      <b-carousel-slide img-src="https://picsum.photos/1024/480/?image=54">
-        <h1>Hello world!</h1>
-      </b-carousel-slide>
+      <h5 class="mt-0">Sobre</h5>
+      <p>
+        Livrando é um site do Rotaract Club de Niterói Icaraí, um grupo de jovens filiado ao Rotary Internacional 
+        voltado a fazer serviços à comunidade, desenvolvimento pessoal e profissional, além de fomentar a liderança.
+        Nosso intuito com o site é possibilitar, de maneira fácil e intuitiva, a troca de livros!
+      </p>
+      <p>
+        Mais informações!
+      </p>
 
-      <!-- Slides with image only -->
-      <b-carousel-slide img-src="https://picsum.photos/1024/480/?image=58"></b-carousel-slide>
-
-      <!-- Slides with img slot -->
-      <!-- Note the classes .d-block and .img-fluid to prevent browser default image alignment -->
-      <b-carousel-slide>
-        <template #img>
-          <img
-            class="d-block img-fluid w-100"
-            width="1024"
-            height="480"
-            src="https://picsum.photos/1024/480/?image=55"
-            alt="image slot"
-          >
+      <b-media>
+        <template #aside>
+          <b-img blank blank-color="#ccc" width="64" alt="placeholder"></b-img>
         </template>
-      </b-carousel-slide>
 
-      <!-- Slide with blank fluid image to maintain slide aspect ratio -->
-      <b-carousel-slide caption="Blank Image" img-blank img-alt="Blank image">
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eros felis, tincidunt
-          a tincidunt eget, convallis vel est. Ut pellentesque ut lacus vel interdum.
+        <h5 class="mt-0">Nested Media</h5>
+        <p class="mb-0">
+          Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in
+          faucibus.
         </p>
-      </b-carousel-slide>
-    </b-carousel>
+      </b-media>
+    </b-media>
+  </b-card>
+</div>
 
-    <p class="mt-4">
-      Slide #: {{ slide }}<br>
-      Sliding: {{ sliding }}
-    </p>
   </div>
 </template>
 
