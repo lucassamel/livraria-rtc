@@ -3,12 +3,12 @@
     <b-form @submit="onSubmit" @reset="onReset" v-if="show">
       <b-form-group
         id="input-group-1"
-        label="Email address:"
+        label="Email :"
         label-for="input-1"
         description="We'll never share your email with anyone else."
       >
         <b-form-input
-          id="input-1"
+          id="email"
           v-model="form.email"
           type="email"
           placeholder="Enter email"
@@ -16,11 +16,11 @@
         ></b-form-input>
       </b-form-group>
 
-      <b-form-group id="input-group-2" label="Your Name:" label-for="input-2">
+      <b-form-group id="input-group-2" label="Senha :" label-for="input-2">
         <b-form-input
-          id="input-2"
+          id="password"
           v-model="form.name"
-          placeholder="Enter name"
+          placeholder="Senha"
           required
         ></b-form-input>
       </b-form-group>
@@ -48,30 +48,33 @@
 </template>
 
 <script>
+import { mapActions } from "vuex";
+
   export default {
+    name: "login",
     data() {
       return {
         form: {
           email: '',
-          name: '',          
-          checked: []
+          senha: ''    
         },
         foods: [{ text: 'Select One', value: null }, 'Carrots', 'Beans', 'Tomatoes', 'Corn'],
         show: true
       }
     },
     methods: {
+      ...mapActions(["login"]),
+
       onSubmit(event) {
+        this.login(this.form);
         event.preventDefault()
-        alert(JSON.stringify(this.form))
+        alert(JSON.stringify("Login efetuado"))
       },
       onReset(event) {
         event.preventDefault()
         // Reset our form values
         this.form.email = ''
-        this.form.name = ''
-        this.form.food = null
-        this.form.checked = []
+        this.form.password = ''
         // Trick to reset/clear native browser form validation state
         this.show = false
         this.$nextTick(() => {

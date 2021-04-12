@@ -1,13 +1,13 @@
 <template>
   <div id="app">
     
-      <Header/>   
+    <Header/>   
       
     <b-container fluid>
       <router-view />
     </b-container>
-    <br>
-    <Botton/>
+    
+    <Botton class="footer"/>
   </div>
 </template>
 
@@ -32,6 +32,12 @@ export default {
   top: 0;
   left: 0;
   right: 0;
+}
+
+.footer {
+    position:relative;
+    bottom:0;
+    width:100%;
 }
 
 </style>

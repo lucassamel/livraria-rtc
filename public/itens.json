@@ -1,0 +1,64 @@
+    
+   {"itens":[
+
+   
+    {
+       "id": 1,
+       "title": "Do Mil ao Milhão",
+       "src":"https://images-na.ssl-images-amazon.com/images/I/41TsvI70n9L._AC_SX184_.jpg",
+       "descricao": "Ótimo site! Me ajudou a encontrar bons locais para comer.",
+       "estoque": 2
+     },
+     {
+       "id": 2,
+       "title": "As armas da persuasão",
+       "src":"https://images-na.ssl-images-amazon.com/images/I/51zv8BJ+ZbL._AC_SX184_.jpg",
+       "descricao": "Ótimo site! Me ajudou a encontrar bons locais para comer.",
+       "estoque": 2
+     },
+     {
+       "id": 3,
+       "title": "Leite",
+       "src":"https://savegnago.vteximg.com.br/arquivos/ids/291213-375-375/LEITE-LONGA-VIDA-NESTLE-1L-NINHO.jpg?v=636741622279370000",
+       "descricao": "Ótimo site! Me ajudou a encontrar bons locais para comer.",
+       "estoque": 2
+     },
+     {
+       "id": 4,
+       "title": "Biscoito",
+       "src":"https://static.carrefour.com.br/medias/sys_master/images/images/h6e/hb6/h00/h00/12655759720478.jpg",
+       "descricao": "Ótimo site! Me ajudou a encontrar bons locais para comer.",
+       "estoque": 2
+     },
+     {
+       "id": 5,
+       "title": "Arroz",
+       "src":"https://www.paodeacucar.com/img/uploads/1/678/510678.jpg?type=product",
+       "descricao": "Ótimo site! Me ajudou a encontrar bons locais para comer.",
+       "estoque": 2
+     },
+     {
+       "id": 6,
+       "title": "Feijão",
+       "src":"https://savegnago.vteximg.com.br/arquivos/ids/271587-375-375/figura-1frente.jpg?v=636131818547300000",
+       "descricao": "Ótimo site! Me ajudou a encontrar bons locais para comer.",
+       "estoque": 2
+     },
+     {
+       "id": 7,
+       "title": "Macarrão",
+       "src":"https://www.deliveryextra.com.br/img/uploads/1/691/570691.png?type=product",
+       "descricao": "Ótimo site! Me ajudou a encontrar bons locais para comer.",
+       "estoque": 2
+     },
+     {
+       "id": 8,
+       "title": "Pasta de Dente",
+       "src":"https://drogariasp.vteximg.com.br/arquivos/ids/321422-500-500/Creme-Dental-Colgate-90g-Tripla-Acao-Drogaria-SP-27537-2.jpg?v=636753789254200000",
+       "descricao": "Ótimo site! Me ajudou a encontrar bons locais para comer.",
+       "estoque": 2
+     }
+   ]
+   }
+ 
+   
