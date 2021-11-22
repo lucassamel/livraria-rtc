@@ -6,15 +6,16 @@
         v-for="livro in livros"
         :key="livro.id"
         :title="livro.nome"
-        :id="i.id"
+        img-src="https://veja.abril.com.br/wp-content/uploads/2017/08/cultura-livros-20141109-003.jpg"
+        :id="livro.id"
         img-alt="Image"
         img-top
         tag="article"
         style="max-width: 20rem;"
         class="mb-2"
       >
-        <b-card-text> {{ livro.descricao }} </b-card-text>
-        <b-card-text v-if="livro.estoque <= 2" id="estoque"
+        <b-card-text> {{ livro.nome }} </b-card-text>
+        <b-card-text v-if="livro.paginas <= 2" id="estoque"
           >Estoque Disponível: {{ livro.estoque }}</b-card-text
         >
         <b-card-text v-if="livro.estoque >= 3" id="disponivel"
@@ -48,12 +49,16 @@ export default {
   components: {},
   data() {
     return {
-      livros: [],
+      livros: [
+        
+      ],
+      api: 'http://localhost:61303/api/livros'
     };
   },
   created() {
-    axios.get('http://localhost:61303/api/livros').then((response) => {
-      this.livros = response.data
+    axios.get("http://localhost:61303/api/livros").then((response) => {
+      this.livros = response.data;
+      console.log(response.data);
     });
   },
   /**computed: mapGetters(["allItens"]),

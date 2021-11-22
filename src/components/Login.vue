@@ -25,8 +25,6 @@
         ></b-form-input>
       </b-form-group>
 
-      
-
       <b-form-group id="input-group-4" v-slot="{ ariaDescribedby }">
         <b-form-checkbox-group
           v-model="form.checked"
@@ -50,37 +48,43 @@
 <script>
 import { mapActions } from "vuex";
 
-  export default {
-    name: "login",
-    data() {
-      return {
-        form: {
-          email: '',
-          senha: ''    
-        },
-        foods: [{ text: 'Select One', value: null }, 'Carrots', 'Beans', 'Tomatoes', 'Corn'],
-        show: true
-      }
-    },
-    methods: {
-      ...mapActions(["login"]),
-
-      onSubmit(event) {
-        this.login(this.form);
-        event.preventDefault()
-        alert(JSON.stringify("Login efetuado"))
+export default {
+  name: "login",
+  data() {
+    return {
+      form: {
+        email: "",
+        senha: "",
       },
-      onReset(event) {
-        event.preventDefault()
-        // Reset our form values
-        this.form.email = ''
-        this.form.password = ''
-        // Trick to reset/clear native browser form validation state
-        this.show = false
-        this.$nextTick(() => {
-          this.show = true
-        })
-      }
-    }
-  }
+      foods: [
+        { text: "Select One", value: null },
+        "Carrots",
+        "Beans",
+        "Tomatoes",
+        "Corn",
+      ],
+      show: true,
+    };
+  },
+  methods: {
+    ...mapActions(["login"]),
+
+    onSubmit(event) {
+      this.login(this.form);
+      event.preventDefault();
+      alert(JSON.stringify("Login efetuado"));
+    },
+    onReset(event) {
+      event.preventDefault();
+      // Reset our form values
+      this.form.email = "";
+      this.form.password = "";
+      // Trick to reset/clear native browser form validation state
+      this.show = false;
+      this.$nextTick(() => {
+        this.show = true;
+      });
+    },
+  },
+};
 </script>
