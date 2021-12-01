@@ -35,7 +35,7 @@ export default {
 }
 
 .footer {
-    position:relative;
+    position:fixed;
     bottom:0;
     width:100%;
 }

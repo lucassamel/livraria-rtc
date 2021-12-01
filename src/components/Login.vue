@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <b-form @submit="onSubmit" @reset="onReset" v-if="show">
+  <div class="login">
+    <b-form @submit.prevent="onSubmit" @reset="onReset" v-if="show">
       <b-form-group
         id="input-group-1"
         label="Email :"
@@ -19,24 +19,13 @@
       <b-form-group id="input-group-2" label="Senha :" label-for="input-2">
         <b-form-input
           id="password"
-          v-model="form.name"
+          v-model="form.password"
           placeholder="Senha"
           required
         ></b-form-input>
       </b-form-group>
 
-      <b-form-group id="input-group-4" v-slot="{ ariaDescribedby }">
-        <b-form-checkbox-group
-          v-model="form.checked"
-          id="checkboxes-4"
-          :aria-describedby="ariaDescribedby"
-        >
-          <b-form-checkbox value="me">Check me out</b-form-checkbox>
-          <b-form-checkbox value="that">Check that out</b-form-checkbox>
-        </b-form-checkbox-group>
-      </b-form-group>
-
-      <b-button type="submit" variant="primary">Submit</b-button>
+      <b-button type="submit" variant="primary">Login</b-button>
       <b-button type="reset" variant="danger">Reset</b-button>
     </b-form>
     <b-card class="mt-3" header="Form Data Result">
@@ -46,7 +35,8 @@
 </template>
 
 <script>
-import { mapActions } from "vuex";
+// import axios from "axios";
+import api from "../config/api";
 
 export default {
   name: "login",
@@ -54,33 +44,51 @@ export default {
     return {
       form: {
         email: "",
-        senha: "",
+        password: "",
       },
-      foods: [
-        { text: "Select One", value: null },
-        "Carrots",
-        "Beans",
-        "Tomatoes",
-        "Corn",
-      ],
+      token: "",
       show: true,
     };
   },
-  methods: {
-    ...mapActions(["login"]),
+  // async created() {
+  //   const login = { email: this.form.email, password: this.form.password };
+  //   const response = await api.post("axount/login", login);
+  //   this.token = response.data;
+  // },
 
-    onSubmit(event) {
-      this.login(this.form);
-      event.preventDefault();
-      alert(JSON.stringify("Login efetuado"));
+  methods: {
+    onSubmit() {
+      this.login();
     },
-    onReset(event) {
-      event.preventDefault();
+    async login() {
+      // const login = { email: this.form.email, password: this.form.password };
+      // const response = await api.post("account/login", login);
+      // this.token = response.data;
+
+      await api
+        .post(
+          "account/login",
+          { email: this.form.email, password: this.form.password },
+          { "Content-Type": "application/json" }
+        )
+        .then((response) => {
+          console.log("Usuario Logado");
+          console.log(response);
+          // localStorage.setItem("jwtToken", response.data.token);
+          this.home();
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+    home() {
+      this.$router.push({ name: "home" });
+    },
+    onReset(evt) {
+      evt.preventDefault();
       // Reset our form values
-      this.form.email = "";
-      this.form.password = "";
-      // Trick to reset/clear native browser form validation state
-      this.show = false;
+      this.form.email = "alunos@vue.com";
+      this.form.password = "12345";
       this.$nextTick(() => {
         this.show = true;
       });
@@ -88,3 +96,13 @@ export default {
   },
 };
 </script>
+
+<style>
+.login {
+  width: 50%;
+  margin: auto;
+  border: 2px solid #bcbcbc;
+  padding: 10px;
+  margin-top: 1%;
+}
+</style>

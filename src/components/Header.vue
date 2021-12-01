@@ -51,6 +51,18 @@ export default {
     home() {
       this.$router.push({ name: "home" });
     },
+    comoFunciona() {
+      this.$router.push({ name: "home" });
+    },
+    doar() {
+      this.$router.push({ name: "home" });
+    },
+    faq() {
+      this.$router.push({ name: "home" });
+    },
+    contato() {
+      this.$router.push({ name: "home" });
+    },
   },
 };
 </script>

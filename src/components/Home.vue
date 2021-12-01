@@ -1,32 +1,28 @@
 <template>
-  <div>
+  <div class="home">
     <br />
     <div class="cards" v-if="livros.length > 0">
       <b-card
-        v-for="livro in livros"
-        :key="livro.id"
-        :title="livro.nome"
+        v-for="i in livros"
+        :key="i.id"
+        :title="i.titulo"
         img-src="https://veja.abril.com.br/wp-content/uploads/2017/08/cultura-livros-20141109-003.jpg"
-        :id="livro.id"
+        :id="i.id"
         img-alt="Image"
         img-top
         tag="article"
         style="max-width: 20rem;"
         class="mb-2"
       >
-        <b-card-text> {{ livro.nome }} </b-card-text>
-        <b-card-text v-if="livro.paginas <= 2" id="estoque"
-          >Estoque Disponível: {{ livro.estoque }}</b-card-text
-        >
-        <b-card-text v-if="livro.estoque >= 3" id="disponivel"
-          >Estoque Disponível: {{ livro.estoque }}</b-card-text
-        >
+        <b-card-text> {{ i.genero }} </b-card-text>
+        
+       
         <b-button size="sm" class="mb-2" variant="danger">
-          <b-icon @click="deleteIten(livro.id)" icon="trash"></b-icon>
+          <b-icon @click="deleteIten(i.id)" icon="trash"></b-icon>
         </b-button>
         <router-link
           tag="a"
-          :to="{ name: 'DetalheIten', params: { id: livro.id } }"
+          :to="{ name: 'DetalheIten', params: { id: i.id } }"
         >
           <b-button class="margemBotao" size="sm" variant="success"
             >Detalhe do Item</b-button
@@ -39,8 +35,9 @@
 
 <script>
 //import config from "../config/config";
-import axios from "axios";
+// import axios from "axios";
 
+import api from "../config/api";
 /*import { mapGetters, mapActions } from "vuex";
  */
 
@@ -51,32 +48,33 @@ export default {
     return {
       livros: [
         
-      ],
-      api: 'http://localhost:61303/api/livros'
+      ]
     };
   },
   created() {
-    axios.get("http://localhost:61303/api/livros").then((response) => {
-      this.livros = response.data;
-      console.log(response.data);
-    });
+    this.getLivros();
   },
-  /**computed: mapGetters(["allItens"]),
-  created() {
-    this.getItens();
-  },
-
-  methods:{
-    ...mapActions(["getItens", "deleteIten"]),
-
-    editar() {
-      this.$router.push({ name: 'editarIten' });
+  methods: {
+    getLivros() {
+      api.get("livros").then((response) => {
+        this.livros = response.data;
+        console.log(response.data);
+      }).catch((error) => {
+        console.log(error);
+      })
+      
     },
-    detalheIten() {
-      this.$router.push({ name: 'DetalheIten' });
-    }
-  }
-  */
+    
+
+  //   deleteIten(i) {
+  //   axios.delete("http://localhost:61303/api/livros/" + i.id).then((response) => {
+  //     console.log(response.data);
+  //   }).catch((response) => {
+  //     console.log(response);
+  //   })
+  // }
+  },
+  
 };
 </script>
 
@@ -98,5 +96,12 @@ export default {
 
 #disponivel {
   color: green;
+}
+
+.home{
+  width: 80%;
+  margin: auto;  
+  border: 2px solid #bcbcbc;
+  padding: 10px;
 }
 </style>
