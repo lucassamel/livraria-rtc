@@ -6,7 +6,7 @@ const state = () => ({
     "usuarioId": 0,
     "nome": "",
     "sobrenome": "",
-    "email": "teste"
+    "email": ""
 },
 logOut: false,
 });
@@ -42,6 +42,9 @@ const actions = {
       commit("setloginApiStatus", "failed");
     }
   },
+
+  // async userRegister({ commit }){},
+
   async userLogOut({ commit }) {
     const response = await axios
       .post(

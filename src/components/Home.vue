@@ -14,9 +14,9 @@
         style="max-width: 20rem;"
         class="mb-2"
       >
-        <b-card-text> {{ i.genero }} </b-card-text>
-        
-       
+        <b-card-text>Autor: {{ i.autor }} </b-card-text>
+        <b-card-text>Gênero: {{ i.genero }} </b-card-text>
+
         <b-button size="sm" class="mb-2" variant="danger">
           <b-icon @click="deleteIten(i.id)" icon="trash"></b-icon>
         </b-button>
@@ -46,9 +46,7 @@ export default {
   components: {},
   data() {
     return {
-      livros: [
-        
-      ]
+      livros: [],
     };
   },
   created() {
@@ -56,25 +54,25 @@ export default {
   },
   methods: {
     getLivros() {
-      api.get("livros").then((response) => {
-        this.livros = response.data;
-        console.log(response.data);
-      }).catch((error) => {
-        console.log(error);
-      })
-      
+      api
+        .get("livros")
+        .then((response) => {
+          this.livros = response.data;
+          console.log(response.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     },
-    
 
-  //   deleteIten(i) {
-  //   axios.delete("http://localhost:61303/api/livros/" + i.id).then((response) => {
-  //     console.log(response.data);
-  //   }).catch((response) => {
-  //     console.log(response);
-  //   })
-  // }
+    //   deleteIten(i) {
+    //   axios.delete("http://localhost:61303/api/livros/" + i.id).then((response) => {
+    //     console.log(response.data);
+    //   }).catch((response) => {
+    //     console.log(response);
+    //   })
+    // }
   },
-  
 };
 </script>
 
@@ -98,9 +96,9 @@ export default {
   color: green;
 }
 
-.home{
+.home {
   width: 80%;
-  margin: auto;  
+  margin: auto;
   border: 2px solid #bcbcbc;
   padding: 10px;
 }

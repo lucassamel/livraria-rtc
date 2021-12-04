@@ -4,7 +4,7 @@
       <b-navbar toggleable="lg" type="dark" style="background-color: #db5079">
         <b-navbar-brand @click="home" href="#"
           >Livrando
-          <img src="" width="54" alt="rotaract" />
+          <!-- <img src="" width="54" alt="rotaract" /> -->
         </b-navbar-brand>
 
         <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
@@ -25,10 +25,10 @@
 
             <div>
               <b-nav>
-                <b-nav-item @click="login" href="#"    >Login</b-nav-item>
-                <b-nav-item @click="login" href="#"    >Register</b-nav-item>
-                <b-nav-item @click="logOut" href="#"  >Logout</b-nav-item>
-                <b-nav-text>{{ getUserProfile.email }}</b-nav-text>
+                <b-nav-item @click="login" href="#" v-if="getUserProfile.usuarioId == 0"   >Login</b-nav-item>
+                <b-nav-item @click="register" href="#" v-if="getUserProfile.usuarioId == 0"   >Register</b-nav-item>
+                <b-nav-item @click="livros" href="# " >Bem vindo {{ getUserProfile.email }} </b-nav-item>
+                <b-nav-item @click="logOut" href="#" v-if="getUserProfile.usuarioId !== 0"  >Logout</b-nav-item>
               </b-nav>
             </div>
           </b-navbar-nav>
@@ -86,6 +86,9 @@ export default {
     sobre() {
       this.$router.push({ name: "sobre" });
     },
+    register() {
+      this.$router.push({ name: "userRegister" });
+    },
     home() {
       this.$router.push({ name: "home" });
     },
@@ -95,12 +98,11 @@ export default {
     doar() {
       this.$router.push({ name: "home" });
     },
-    faq() {
-      this.$router.push({ name: "home" });
+    livros() {
+      this.$router.push({ name: "userLivros" });
     },
-    contato() {
-      this.$router.push({ name: "home" });
-    },
+   
+    
   },
 };
 </script>

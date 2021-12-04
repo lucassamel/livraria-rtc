@@ -3,6 +3,8 @@ import Home from "./components/Home.vue";
 import Login from "./components/Login";
 import Sobre from "./components/Sobre";
 import store from "./store/index";
+import UserRegister from "./components/UserRegister";
+import UserLivros from "./components/UserLivros"
 // import { createRouter, createWebHistory } from "vue-router";
 
 const router =  new VueRouter
@@ -25,10 +27,23 @@ const router =  new VueRouter
       name: "sobre",
       component: Sobre,
     },
+    {
+      path: "/register",
+      name: "userRegister",
+      component: UserRegister,
+    },
+    {
+      path: "/userLivros",
+      name: "userLivros",
+      component: UserLivros,
+      meta: { requireAuth: true },
+    },
   ],
 });
 
 router.beforeEach(async (to, from, next) => {
+
+  
     if(to.meta.requireAuth){
         let userProfile = store.getters["account/getUserProfile"];
         if(userProfile.id === 0){
