@@ -15,6 +15,7 @@
 
 import Header from './components/Header'
 import Botton from './components/Botton'
+import { mapGetters} from "vuex"
 
 export default {
   name: 'App',
@@ -22,6 +23,11 @@ export default {
     
     Header, 
     Botton
+  },
+  computed:{
+    ...mapGetters("account",{
+      userProfile: "userProfile"
+    })
   }
 }
 </script>

@@ -36,7 +36,8 @@
 
 <script>
 // import axios from "axios";
-import api from "../config/api";
+// import api from "../config/api";
+import { mapActions, mapGetters, mapMutations } from "vuex";
 
 export default {
   name: "login",
@@ -55,32 +56,60 @@ export default {
   //   const response = await api.post("axount/login", login);
   //   this.token = response.data;
   // },
-
+  computed: {
+    ...mapGetters("account", { getLoginApiStatus: "getLoginApiStatus" }),
+  },
+  ...mapMutations("account", {
+      setUserProfile: "setUserProfile",
+      
+    }),
   methods: {
+    ...mapActions("account", {
+      userLogin: "userLogin",
+    }),
+    async login() {
+      const payload = this.form;
+
+      await this.userLogin(payload);
+      if (this.getLoginApiStatus == "success") {
+        // let userProfile = {
+        //   usuarioId: 0,
+        //   nome: response.nome,
+        //   sobrenome: payload.sobrenome,
+        //   email: payload.email,
+        // };
+        // this.userProfile = userProfile
+        this.home();
+
+      } else {
+        alert("error");
+      }
+    },
     onSubmit() {
       this.login();
     },
-    async login() {
-      // const login = { email: this.form.email, password: this.form.password };
-      // const response = await api.post("account/login", login);
-      // this.token = response.data;
+    // async login() {
 
-      await api
-        .post(
-          "account/login",
-          { email: this.form.email, password: this.form.password },
-          { "Content-Type": "application/json" }
-        )
-        .then((response) => {
-          console.log("Usuario Logado");
-          console.log(response);
-          // localStorage.setItem("jwtToken", response.data.token);
-          this.home();
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    },
+    //   // const login = { email: this.form.email, password: this.form.password };
+    //   // const response = await api.post("account/login", login);
+    //   // this.token = response.data;
+
+    //   await api
+    //     .post(
+    //       "account/login",
+    //       this.form,
+    //       {withCredentials: true}
+    //     )
+    //     .then((response) => {
+    //       console.log("Usuario Logado");
+    //       console.log(response.data);
+    //       // localStorage.setItem("jwtToken", response.data.token);
+    //       this.home();
+    //     })
+    //     .catch((error) => {
+    //       console.log(error);
+    //     });
+    // },
     home() {
       this.$router.push({ name: "home" });
     },

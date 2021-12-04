@@ -17,20 +17,20 @@
             <b-nav-item @click="sobre" href="#" active>Sobre</b-nav-item>
             <b-nav-item @click="livros" href="#" active>Livros</b-nav-item>
             <b-nav-item @click="doar" href="#" active>Doar</b-nav-item>
-            <b-nav-item @click="faq" href="#" active>FAQ</b-nav-item>
-            <b-nav-item @click="contato" href="#" active>Contato</b-nav-item>
           </b-navbar-nav>
 
           <!-- Right aligned nav items -->
           <b-navbar-nav class="ml-auto">
-            <b-nav-item-dropdown right>
-              <!-- Using 'button-content' slot -->
-              <template #button-content>
-                <em>User</em>
-              </template>
-              <b-dropdown-item @click="login" href="#">Login</b-dropdown-item>
-              <b-dropdown-item href="#">Sign Out</b-dropdown-item>
-            </b-nav-item-dropdown>
+            
+
+            <div>
+              <b-nav>
+                <b-nav-item @click="login" href="#"    >Login</b-nav-item>
+                <b-nav-item @click="login" href="#"    >Register</b-nav-item>
+                <b-nav-item @click="logOut" href="#"  >Logout</b-nav-item>
+                <b-nav-text>{{ getUserProfile.email }}</b-nav-text>
+              </b-nav>
+            </div>
           </b-navbar-nav>
         </b-collapse>
       </b-navbar>
@@ -39,9 +39,47 @@
 </template>
 
 <script>
+import { mapGetters, mapActions, mapMutations } from "vuex";
+
+
 export default {
   name: "header",
+  computed: {
+    ...mapGetters("account", {
+      getUserProfile: "getUserProfile",
+      getLogOut: "getLogOut",
+      
+    }),
+  },
+  created() {
+    this.userProfile();
+  },
   methods: {
+    ...mapActions("account", {
+      userLogOut: "userLogOut",
+    }),
+
+    ...mapMutations("account", {
+      setUserProfile: "setUserProfile",
+      setLogOut: "setLogOut",
+    }),
+
+    async logOut() {
+      await this.userLogOut();
+      if (this.setLogOut) {
+        const resetUser = {
+          usuarioId: 0,
+          nome: "",
+          sobrenome: "",
+          email: "",
+        };
+        this.setUserProfile(resetUser);
+        this.setLogOut(false);
+        this.home();
+      }
+    },
+    
+
     login() {
       this.$router.push({ name: "login" });
     },

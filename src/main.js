@@ -4,7 +4,7 @@ import App from './App.vue'
 import router from './router';
 import VueRouter from 'vue-router'
 
-import store from "./store";
+import store from "./store/index";
 
 import { BootstrapVue, IconsPlugin, BootstrapVueIcons } from 'bootstrap-vue'
 
@@ -22,7 +22,7 @@ Vue.use(BootstrapVueIcons)
 
 Vue.use(VueRouter)
 
-Vue.config.productionTip = false
+Vue.config.productionTip = true
 
 // Vue.prototype.$axios = axios
 
