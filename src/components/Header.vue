@@ -21,15 +21,34 @@
 
           <!-- Right aligned nav items -->
           <b-navbar-nav class="ml-auto">
-            
-
             <div>
               <b-nav>
-                <b-nav-item @click="login" href="#" v-if="getUserProfile.usuarioId == 0"   >Login</b-nav-item>
-                <b-nav-item @click="register" href="#" v-if="getUserProfile.usuarioId == 0"   >Register</b-nav-item>
-                <b-nav-item @click="livros" href="# " >Bem vindo {{ getUserProfile.email }} </b-nav-item>
-                <b-nav-item @click="logOut" href="#" v-if="getUserProfile.usuarioId !== 0"  >Logout</b-nav-item>
+                <b-nav-item
+                  @click="login"
+                  href="#"
+                  v-if="getUserProfile.usuarioId == 0"
+                  >Login</b-nav-item
+                >
+                <b-nav-item
+                  @click="register"
+                  href="#"
+                  v-if="getUserProfile.usuarioId == 0"
+                  >Register</b-nav-item
+                >
+                <b-nav-item v-if="getUserProfile.usuarioId !== 0"
+                  >Bem vindo {{ getUserProfile.email }}
+                </b-nav-item>
               </b-nav>
+            </div>
+            <div v-if="getUserProfile.usuarioId !== 0">
+              <b-dropdown text="Menu" class="m-md-2" id="dropdown-right" right>
+                <b-dropdown-item @click="livros">Meus Livros</b-dropdown-item>
+                <b-dropdown-item @click="cadastroLivro">Cadastrar Livro</b-dropdown-item>
+                <b-dropdown-divider></b-dropdown-divider>
+                <b-dropdown-item @click="logOut" href="#"
+                  >Logout</b-dropdown-item
+                >
+              </b-dropdown>
             </div>
           </b-navbar-nav>
         </b-collapse>
@@ -41,14 +60,12 @@
 <script>
 import { mapGetters, mapActions, mapMutations } from "vuex";
 
-
 export default {
   name: "header",
   computed: {
     ...mapGetters("account", {
       getUserProfile: "getUserProfile",
       getLogOut: "getLogOut",
-      
     }),
   },
   created() {
@@ -78,7 +95,6 @@ export default {
         this.home();
       }
     },
-    
 
     login() {
       this.$router.push({ name: "login" });
@@ -101,8 +117,9 @@ export default {
     livros() {
       this.$router.push({ name: "userLivros" });
     },
-   
-    
+    cadastroLivro() {
+      this.$router.push({ name: "cadastroLivro" });
+    },
   },
 };
 </script>

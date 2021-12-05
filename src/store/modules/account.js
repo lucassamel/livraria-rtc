@@ -37,6 +37,7 @@ const actions = {
     if (response && response.data) {
       commit("setloginApiStatus", "success");
       commit("setUserProfile", response.data);
+      localStorage.setItem("token",true)
       console.log(response.data);
     } else {
       commit("setloginApiStatus", "failed");
@@ -55,6 +56,7 @@ const actions = {
       });
       if(response){
         commit("setLogOut", true)
+        localStorage.removeItem("token")
         }
         else{
         commit("setLogOut", false)

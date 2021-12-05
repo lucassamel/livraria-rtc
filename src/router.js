@@ -2,13 +2,13 @@ import VueRouter from "vue-router";
 import Home from "./components/Home.vue";
 import Login from "./components/Login";
 import Sobre from "./components/Sobre";
-import store from "./store/index";
+// import store from "./store/index";
 import UserRegister from "./components/UserRegister";
-import UserLivros from "./components/UserLivros"
+import UserLivros from "./components/UserLivros";
+import CadastroLivro from "./components/CadastroLivro";
 // import { createRouter, createWebHistory } from "vue-router";
 
-const router =  new VueRouter
-({
+const router = new VueRouter({
   mode: "history",
   routes: [
     {
@@ -38,24 +38,33 @@ const router =  new VueRouter
       component: UserLivros,
       meta: { requireAuth: true },
     },
+    {
+      path: "/cadastroLivro",
+      name: "cadastroLivro",
+      component: CadastroLivro,
+      meta: { requireAuth: true },
+    },
   ],
 });
 
-router.beforeEach(async (to, from, next) => {
+// router.beforeEach(async (to, from, next) => {
+//   let userProfile = store.getters["account/getUserProfile"];
+//   if (userProfile.usuarioId === 0 && localStorage.getItem("token")) {
+//     await store.dispatch("account/userProfile");
+//     userProfile = store.getters["account/getUserProfile"];
+//   }
 
-  
-    if(to.meta.requireAuth){
-        let userProfile = store.getters["account/getUserProfile"];
-        if(userProfile.id === 0){
-            await store.dispatch("account/userProfile");
-            userProfile = store.getters["account/getUserProfile"];
-            if(userProfile.id == 0){
-                return next({path: "/login"})
-            }
-        }
-    }
-    return next()
-});
+//   if (to.meta.requireAuth) {
+//     if (userProfile.usuarioId == 0) {
+//       return next({ path: "/login" });
+//     }
+//   }
+//   else {
+//     if(userProfile.usuarioId > 0) {
+//       return next({ path: "/userLivros"})
+//     }
+//   }
+//   return next();
+// });
 
 export default router;
-
