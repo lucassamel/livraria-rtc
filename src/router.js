@@ -6,6 +6,7 @@ import Sobre from "./components/Sobre";
 import UserRegister from "./components/UserRegister";
 import UserLivros from "./components/UserLivros";
 import CadastroLivro from "./components/CadastroLivro";
+import DetalheLivro from "./components/DetalheLivro";
 // import { createRouter, createWebHistory } from "vue-router";
 
 const router = new VueRouter({
@@ -43,6 +44,11 @@ const router = new VueRouter({
       name: "cadastroLivro",
       component: CadastroLivro,
       meta: { requireAuth: true },
+    },
+    {
+      path: "/detalheLivro",
+      name: "detalheLivro",
+      component: DetalheLivro,
     },
   ],
 });

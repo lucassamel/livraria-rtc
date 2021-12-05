@@ -22,9 +22,12 @@
         </b-button> -->
         <router-link
           tag="a"
-          :to="{ name: 'DetalheIten', params: { id: i.id } }"
+          :to="{ name: 'detalheLivro', params: { id: i.livroId } }"
         >
-          <b-button class="margemBotao" size="sm" variant="success"
+          <b-button
+            class="margemBotao"
+            size="sm"
+            variant="success"
             >Detalhe do Item</b-button
           >
         </router-link>
@@ -38,8 +41,7 @@
 // import axios from "axios";
 
 import api from "../config/api";
-/*import { mapGetters, mapActions } from "vuex";
- */
+
 
 export default {
   name: "home",
@@ -47,12 +49,17 @@ export default {
   data() {
     return {
       livros: [],
+      livroId: 0,
     };
   },
   created() {
     this.getLivros();
+  
   },
+  
   methods: {
+    
+
     getLivros() {
       api
         .get("livros")
@@ -65,13 +72,6 @@ export default {
         });
     },
 
-    //   deleteIten(i) {
-    //   axios.delete("http://localhost:61303/api/livros/" + i.id).then((response) => {
-    //     console.log(response.data);
-    //   }).catch((response) => {
-    //     console.log(response);
-    //   })
-    // }
   },
 };
 </script>
