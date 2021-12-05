@@ -1,9 +1,9 @@
 <template>
   <div>
     <div class="home">
-        <div class="titulo">
-      <h2>Seus Livros cadastrados</h2>
-    </div>
+      <div class="titulo">
+        <h2>Seus Livros cadastrados</h2>
+      </div>
       <br />
       <div class="cards" v-if="livros.length > 0">
         <b-card
@@ -25,7 +25,9 @@
           <b-card-text>Autor: {{ i.autor }} </b-card-text>
           <b-card-text>Gênero: {{ i.genero }} </b-card-text>
 
-          <b-button href="#" variant="primary">Go somewhere</b-button>
+          <b-button @click="delLivro(i.livroId)" href="#" variant="primary"
+            >Remover livro</b-button
+          >
         </b-card>
       </div>
     </div>
@@ -69,13 +71,28 @@ export default {
           console.log(error);
         });
     },
+    delLivro(i) {
+      api
+        .delete("livros/" + i)
+        .then((response) => {
+          console.log(response.data);
+          this.getLivros();
+        })
+        .catch((error) => {
+          console.log(error);
+          console.log(i);
+        });
+    },
+    refresh() {
+      this.$router.push({ name: "userLivros" });
+    },
   },
 };
 </script>
 
 <style>
 .titulo {
-    text-align: center;
+  text-align: center;
 }
 .home {
   width: 80%;

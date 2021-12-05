@@ -17,9 +17,9 @@
         <b-card-text>Autor: {{ i.autor }} </b-card-text>
         <b-card-text>Gênero: {{ i.genero }} </b-card-text>
 
-        <b-button size="sm" class="mb-2" variant="danger">
+        <!-- <b-button size="sm" class="mb-2" variant="danger">
           <b-icon @click="deleteIten(i.id)" icon="trash"></b-icon>
-        </b-button>
+        </b-button> -->
         <router-link
           tag="a"
           :to="{ name: 'DetalheIten', params: { id: i.id } }"
