@@ -1,30 +1,26 @@
 <template>
-  <div >
+  <div>
     <h2 class="titulo">Informações do livro</h2>
+
     <div class="home">
       <div>
-        <b-card
-          :title="livro.titulo"
-          img-src="https://picsum.photos/600/300/?image=25"
-          img-alt="Image"
-          img-top
-          tag="article"
-          style="max-width: 20rem;"
-          class="mb-2"
-        >
-          <!-- <b-card-text>
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
-        </b-card-text> -->
-
-          <b-button href="#" variant="primary">Go somewhere</b-button>
-        </b-card>
+       
+        <div>
+          <b-img
+            src="https://picsum.photos/1024/400/?image=41"
+            fluid
+            alt="Responsive image"
+          ></b-img>
+        </div>
+        <b-list-group class="">
+          <b-list-group-item>Título: {{ livro.titulo }}</b-list-group-item>
+          <b-list-group-item>Autor: {{ livro.autor }} </b-list-group-item>
+          <b-list-group-item>Gênero: {{ livro.genero }}</b-list-group-item>
+          <b-button @click="delLivro(livro.livroId)" href="#" variant="primary"
+            >Eu quero esse Livro!</b-button
+          >
+        </b-list-group>
       </div>
-      <b-list-group>
-        <b-list-group-item>Titutlo: {{ livro.titulo }}</b-list-group-item>
-        <b-list-group-item>Autor: {{ livro.autor }} </b-list-group-item>
-        <b-list-group-item>Gênero: {{ livro.genero }}</b-list-group-item>
-      </b-list-group>
     </div>
   </div>
 </template>
@@ -55,6 +51,21 @@ export default {
         .catch((error) => {
           console.error(error);
         });
+    },
+    delLivro(i) {
+      api
+        .delete("livros/" + i)
+        .then((response) => {
+          console.log(response.data);
+          this.home();
+        })
+        .catch((error) => {
+          console.log(error);
+          
+        });
+    },
+     home() {
+      this.$router.push({ name: "home" });
     },
   },
 };
